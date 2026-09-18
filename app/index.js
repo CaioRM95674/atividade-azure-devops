@@ -34,7 +34,79 @@ const dbConfig = {
 };
 
 app.get('/', (req, res) => {
-    res.send('<h1>Atividade DevOps - Azure CI/CD e App Insights!</h1><p>Deploy realizado com sucesso.</p><p><a href="/tema">Ver dados do Banco</a></p>');
+    res.send(`
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FIAP - Atividade DevOps</title>
+        <style>
+            body {
+                background-color: #1a1a1a;
+                color: #ffffff;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                text-align: center;
+            }
+            .container {
+                background-color: #262626;
+                padding: 40px;
+                border-radius: 12px;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+                border-top: 5px solid #ED145B;
+                max-width: 600px;
+            }
+            h1 {
+                color: #ED145B;
+                margin-top: 0;
+            }
+            p {
+                font-size: 1.1em;
+                line-height: 1.5;
+                color: #cccccc;
+            }
+            .btn {
+                display: inline-block;
+                margin-top: 20px;
+                padding: 12px 24px;
+                background-color: #ED145B;
+                color: #ffffff;
+                text-decoration: none;
+                border-radius: 6px;
+                font-weight: bold;
+                transition: background-color 0.3s;
+            }
+            .btn:hover {
+                background-color: #c0104a;
+            }
+            .badge {
+                display: inline-block;
+                background-color: #4CAF50;
+                color: white;
+                padding: 5px 10px;
+                border-radius: 4px;
+                font-size: 0.9em;
+                margin-bottom: 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="badge">Deploy Status: Sucesso! ✅</div>
+            <h1>Atividade DevOps & Cloud</h1>
+            <p>Parabéns! Sua aplicação Node.js foi implementada com sucesso no Azure Web App através da sua esteira CI/CD.</p>
+            <p>O App Insights já está monitorando sua aplicação.</p>
+            <a href="/tema" class="btn">🚀 Ver Dados do Banco</a>
+        </div>
+    </body>
+    </html>
+    `);
 });
 
 app.get('/tema', async (req, res) => {
