@@ -45,16 +45,12 @@ jobs:
 
       # DICA PARA OS ALUNOS:
       # O nome do app precisa ser preenchido corretamente abaixo.
-      # Vocês precisarão configurar o secret AZURE_CREDENTIALS
-      # gerado através do comando 'az ad sp create-for-rbac'
-      - name: 'Login to Azure'
-        uses: azure/login@v2
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
+      # Vocês precisarão configurar o secret AZURE_WEBAPP_PUBLISH_PROFILE
+      # ou usar credenciais de login no Azure (azure/login@v1)
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
           app-name: '<nome-do-seu-webapp>'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: ./app
